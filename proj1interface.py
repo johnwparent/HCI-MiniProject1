@@ -32,8 +32,8 @@ def logSelection(colorToLog, colorType):
             sampleColorInt = random.randint(0,5)
             #wait half a second then change sample color
             time.sleep(0.5)
-            sampleColor.config( bg = colors_[sampleColorInt], text = '',
-                                  command = logSelection( colors_[sampleColorInt],'sample'))
+            sampleColor.config( bg = rgb_color_to_hex(colors_[sampleColorInt]), text = '',
+                                  command = logSelection((color_list[sampleColorInt]),'sample'))
       
             
 
@@ -57,6 +57,15 @@ colors_ = [
     (255,255,105),
     (50,153,255),
     (65,0,145),
+]
+
+color_list = [
+    "red",
+    "green",
+    "brown",
+    "yellow",
+    "blue",
+    "purple",
 ]
 
 #red button
