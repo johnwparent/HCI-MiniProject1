@@ -3,6 +3,12 @@ import random as random
 import csv
 import time
 
+def rgb_color_to_hex(rgb_val:tuple):
+    r = hex(rgb_val[0])
+    g = hex(rgb_val[1])
+    b = hex(rgb_val[2])
+    return '#{:0<2}{:0<2}{:0<2}'.format(r[r.rfind('x')+1:],g[g.rfind('x')+1:],b[b.rfind('x')+1:])
+
 #creating file to write to
 with open('testData.csv', mode='w', newline='') as csv_file:
     #declaring headers and creating writer object
@@ -45,47 +51,47 @@ topLabelFrame.grid(row=1, column=0, columnspan=6)
 
 #making color frames
 colors_ = [
-    "red" ,
-    "green",
-    "brown",
-    "yellow",
-    "blue",
-    "purple",
+    (255,102,102),
+    (102,255,102),
+    (104,62,25),
+    (255,255,105),
+    (50,153,255),
+    (65,0,145),
 ]
 
 #red button
 frm_Red = tk.Frame(master=window,padx=10,pady=10)
-Red = tk.Button(master=frm_Red, bg = colors_[0], width=20, height=10,
+Red = tk.Button(master=frm_Red, bg = rgb_color_to_hex(colors_[0]), width=20, height=10,
                 command = lambda: logSelection('red','selection')) 
 Red.pack()
 frm_Red.grid(column=0, row=2)
 #green button
 frm_Green = tk.Frame(master=window,padx=10,pady=10)
-Green = tk.Button(master=frm_Green, bg = colors_[1], width=20, height=10,
+Green = tk.Button(master=frm_Green, bg = rgb_color_to_hex(colors_[1]), width=20, height=10,
                   command = lambda:logSelection('green','selection')) 
 Green.pack()
 frm_Green.grid(column=1, row=2)
 #brown button
 frm_Brown = tk.Frame(master=window,padx=10,pady=10)
-Brown = tk.Button(master=frm_Brown, bg =colors_[2], width=20, height=10,
+Brown = tk.Button(master=frm_Brown, bg=rgb_color_to_hex(colors_[2]), width=20, height=10,
                   command = lambda:logSelection('brown','selection'))
 Brown.pack()
 frm_Brown.grid(column=2, row=2)
 #yellow button
 frm_Yellow = tk.Frame(master=window,padx=10,pady=10)
-Yellow = tk.Button(master=frm_Yellow, bg = colors_[3], width=20, height=10,
+Yellow = tk.Button(master=frm_Yellow, bg = rgb_color_to_hex(colors_[3]), width=20, height=10,
                    command = lambda:logSelection('yellow','selection')) 
 Yellow.pack()
 frm_Yellow.grid(column=3, row=2)
 #blue button
 frm_Blue = tk.Frame(master=window,padx=10,pady=10)
-Blue = tk.Button(master=frm_Blue, bg = colors_[4], width=20, height=10,
+Blue = tk.Button(master=frm_Blue, bg = rgb_color_to_hex(colors_[4]), width=20, height=10,
                  command = lambda:logSelection('blue','selection')) 
 Blue.pack()
 frm_Blue.grid(column=4, row=2)
 #purple button
 frm_Purple = tk.Frame(master=window,padx=10,pady=10)
-Purple = tk.Button(master=frm_Purple, bg = colors_[5], width=20, height=10,
+Purple = tk.Button(master=frm_Purple, bg = rgb_color_to_hex(colors_[5]), width=20, height=10,
                    command = lambda:logSelection('purple','selection')) 
 Purple.pack()
 frm_Purple.grid(column=5, row=2)
@@ -129,4 +135,4 @@ frm_Sample.grid(row=5, rowspan=2, column=4, columnspan=2)
 
 
 
-window.mainloop
+window.mainloop()
