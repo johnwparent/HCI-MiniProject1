@@ -38,7 +38,7 @@ def logSelection(colorToLog, colorType):
             
 
 window = tk.Tk()
-window.after(18000,window.destroy)
+window.after(180000,window.destroy)
 
 #text declaration at top of window
 titleFrame = tk.Frame(master=window,width=200, bg="white")
