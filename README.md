@@ -17,7 +17,7 @@ Two scipts can be found in the scipts directory of this repo. One is named basel
 
 Each represents an interface to be utilized for data gathering. The baseline_interface.py clearly representing the interface with the provided color palatte and the test_interface providing the interface with an updated palatte. Each script will, once activated, run for exactly three minutes before closing itself. The interfaces can be closed earlier if desired. The scripts will produce one CSV file each, in the directory from which they are executed. These CSV files will contian the data gathered from each run of the script. If multiple runs of the script will be made from the same directory, in order to preserve data from previous runs, it is neccesary to manually rename the data files produced by previous run so they will not be overwritten.
 
-To exectue these files, from a chose directory run ```python3 <name-of-script>``` which will bring up the interface. Further instruction will then be provided by said interface.
+To exectue these files, from a chose directory run ```python <name-of-script>``` which will bring up the interface. Further instruction will then be provided by said interface.
 
 #### Collaborators
  - John Parent
