@@ -10,7 +10,7 @@ def rgb_color_to_hex(rgb_val:tuple):
     return '#{:0<2}{:0<2}{:0<2}'.format(r[r.rfind('x')+1:],g[g.rfind('x')+1:],b[b.rfind('x')+1:])
 
 #creating file to write to
-with open('testData.csv', mode='w', newline='') as csv_file:
+with open('testBaselineData.csv', mode='w', newline='') as csv_file:
     #declaring headers and creating writer object
     myFields=['Color','Time','Type'] #Type is sample or selection
     data_writer = csv.DictWriter(csv_file, delimiter=',',fieldnames=myFields)
@@ -22,7 +22,7 @@ with open('testData.csv', mode='w', newline='') as csv_file:
 def logSelection(colorToLog, colorType):
     #writing color and time of selection
     #reopening file (to append this time) and redeclaring data_writer(better way to do this?)
-    with open('testData.csv', mode='a', newline='') as csv_file:
+    with open('testBaselineData.csv', mode='a', newline='') as csv_file:
         data_writer = csv.DictWriter(csv_file, delimiter=',',fieldnames=myFields)
         timeOfLog = time.monotonic()
         data_writer.writerow({'Color':colorToLog,'Time':timeOfLog,'Type':colorType})
