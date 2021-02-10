@@ -27,13 +27,13 @@ def logSelection(colorToLog, colorType):
         timeOfLog = time.monotonic()
         data_writer.writerow({'Color':colorToLog,'Time':timeOfLog,'Type':colorType})
         # changing the sample color if a selection color was clicked
-        if colorType == 'selection':
-            #generate a random # between 0 and 5 to pull a color from color_ array
-            sampleColorInt = random.randint(0,5)
-            #wait half a second then change sample color
-            time.sleep(0.5)
-            sampleColor.config( bg = rgb_color_to_hex(colors_[sampleColorInt]), text = '',
-                                  command = logSelection((color_list[sampleColorInt]),'sample'))
+    if colorType == 'selection':
+        #generate a random # between 0 and 5 to pull a color from color_ array
+        sampleColorInt = random.randint(0,5)
+        #wait half a second then change sample color
+        time.sleep(0.5)
+        sampleColor.config( bg = rgb_color_to_hex(colors_[sampleColorInt]), text = '',
+                                command = logSelection((color_list[sampleColorInt]),'sample'))
       
             
 
