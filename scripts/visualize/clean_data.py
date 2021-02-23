@@ -32,6 +32,8 @@ class DictCleaner(Cleaner):
         self.data_points = 0
         self.color_count = {}
         self.color_time_agg = {}
+        self.color_count_correct = {}
+        self.color_incorrect_time_agg = {}
 
     def condition(self, line, linenum):
         return linenum > 2
@@ -39,11 +41,38 @@ class DictCleaner(Cleaner):
     # amalgamate a value for each color of the parsed csv -
     # basically, have a tuple count and sum - use class value
     def parse_func(self, sample, selection, linenum):
-        print(sample)
-        print(selection)
+        color_sample = sample['Color']
+        selection_color = selection['Color']
+        self.data_points += 1
+        if color_sample in self.color_count:
+            self.color_count[color_sample] += 1
+        else:
+            self.color_count[color_sample] = 1
+        if color_sample in self.color_count_correct:
+            if color_sample == selection_color:
+                self.color_count_correct[color_sample] +=1
+        else:
+            if color_sample == selection_color:
+                self.color_count_correct[color_sample] = 1
+        time_differential = float(selection['Time']) - float(sample['Time'])
+        if color_sample == selection_color:
+            if color_sample in self.color_time_agg:
+                self.color_time_agg[color_sample] += time_differential
+            else:
+                self.color_time_agg[color_sample] = time_differential
+        else:
+            if color_sample in self.color_incorrect_time_agg:
+                self.color_incorrect_time_agg[color_sample] += time_differential
+            else:
+                self.color_incorrect_time_agg[color_sample] = time_differential
+
+    def print_data(self):
+        print(self.data_points)
+        print(self.color_count)
+        print(self.color_time_agg)
+        print(self.color_count_correct)
 
     def iterate_data(self, data):
-        print(data.fieldnames)
         for line in data:
 
             if self.condition(line, data.line_num):
@@ -61,3 +90,4 @@ class DictCleaner(Cleaner):
 
     def readAndParse(self, data:dict, dir_:str):
         self.clean(data, dir_)
+        self.print_data()
