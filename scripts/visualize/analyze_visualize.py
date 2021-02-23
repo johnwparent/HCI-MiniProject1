@@ -8,7 +8,7 @@ def main(args):
     cleaner = clean_data.DictCleaner()
     data = dict()
     cleaner.readAndParse(data, parse_args.data_dir)
-    # visualizer.compose_data(parse_args.data_dir)
+    visualizer.compose_data(cleaner)
 
 
 if __name__ == '__main__':

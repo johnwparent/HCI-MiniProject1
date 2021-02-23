@@ -34,7 +34,8 @@ class DictCleaner(Cleaner):
         self.color_time_agg = {}
         self.color_count_correct = {}
         self.color_incorrect_time_agg = {}
-
+        self.color_count_list = {}
+        self.color_count_incorrect_list = {}
     def condition(self, line, linenum):
         return linenum > 2
 
@@ -54,7 +55,9 @@ class DictCleaner(Cleaner):
         else:
             if color_sample == selection_color:
                 self.color_count_correct[color_sample] = 1
+
         time_differential = float(selection['Time']) - float(sample['Time'])
+
         if color_sample == selection_color:
             if color_sample in self.color_time_agg:
                 self.color_time_agg[color_sample] += time_differential
@@ -65,6 +68,16 @@ class DictCleaner(Cleaner):
                 self.color_incorrect_time_agg[color_sample] += time_differential
             else:
                 self.color_incorrect_time_agg[color_sample] = time_differential
+
+        if color_sample not in self.color_count_list:
+            self.color_count_list[color_sample] = []
+        if color_sample not in self.color_count_incorrect_list:
+            self.color_count_incorrect_list[color_sample] = []
+
+        if color_sample == selection_color:
+            self.color_count_list[color_sample].append(time_differential)
+        else:
+            self.color_count_incorrect_list[color_sample].append(time_differential)
 
     def print_data(self):
         print(self.data_points)
