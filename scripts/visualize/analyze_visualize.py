@@ -16,12 +16,11 @@ def main(args):
     visualizer.generate_barplot(data_a, 'correct')
     visualizer.generate_barplot(data_b, 'correct')
     visualizer.generate_barplot(frames, 'baseline')
-    # visualizer.gather_mean(cleanerA)
-    # visualizer.gather_mean(cleanerB)
-    # print()
-    # visualizer.gather_stdev(cleanerA)
-    # visualizer.gather_stdev(cleanerB)
-
+    visualizer.gather_mean(cleanerA)
+    visualizer.gather_mean(cleanerB)
+    print()
+    visualizer.gather_stdev(cleanerA)
+    visualizer.gather_stdev(cleanerB)
     aggA, percentA = visualizer.compute_percent_correct(cleanerA)
     aggB, percentB = visualizer.compute_percent_correct(cleanerB)
 

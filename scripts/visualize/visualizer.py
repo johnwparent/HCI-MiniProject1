@@ -37,8 +37,10 @@ def gather_stdev(read_data: DictCleaner):
     correct_stddev = compute_stddev(read_data.color_count_list)
     incorrect_stddev = compute_stddev(read_data.color_count_incorrect_list)
     print()
+    print("stddev")
     print(correct_stddev)
     print(incorrect_stddev)
+    print("end stddev")
     print()
 
 def compute_mean(total, agg):
@@ -57,8 +59,10 @@ def gather_mean(read_data: DictCleaner):
             incorrect_count[color] = float(read_data.color_count[color])
     incorrect_mean_dict = compute_mean(incorrect_count,read_data.color_incorrect_time_agg)
     print()
+    print("mean")
     print(correct_mean_dict)
     print(incorrect_mean_dict)
+    print("end mean")
     print()
 
 def compose_data(read_data, baseline):
