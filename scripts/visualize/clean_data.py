@@ -34,6 +34,7 @@ class DictCleaner(Cleaner):
         self.color_time_agg = {}
         self.color_count_correct = {}
         self.color_incorrect_time_agg = {}
+
         self.color_count_list = {}
         self.color_count_incorrect_list = {}
     def condition(self, line, linenum):
@@ -103,4 +104,4 @@ class DictCleaner(Cleaner):
 
     def readAndParse(self, data:dict, dir_:str):
         self.clean(data, dir_)
-        self.print_data()
+        # self.print_data()
